@@ -1,10 +1,10 @@
 import json
 from pathlib import Path
 
-# target_dir = Path("EN to RU/llama3.1_8b/Crime and Punishment/Chapter_1/results")
-target_dir = Path("ratings")
+# target_dir = Path("ratings")
+target_dir = Path("EN to RU/qwen3_8b/Crime and Punishment/Chapter_2/temp_1.2/ratings")
 
-# Canonical key mapping (lowercase → desired capitalization)
+# Canonical key mapping
 KEY_MAP = {
     "meaning": "Meaning",
     "grammar": "Grammar",
@@ -14,30 +14,59 @@ KEY_MAP = {
     "completeness": "Completeness",
 }
 
+EXPECTED_KEYS = {
+    "Meaning",
+    "Grammar",
+    "Fluency",
+    "Lexical Choice",
+    "Completeness",
+}
+
 for file in target_dir.glob("*.txt"):
     try:
         with open(file, "r", encoding="utf-8") as f:
             data = json.load(f)
 
-        # Determine where the rating info is
-        if "rating" in data and isinstance(data["rating"], dict):
-            rating_source = data["rating"]
-        else:
-            # Top-level is rating
+        # ---------------------------------------------------
+        # Step 1: Detect rating block (case-insensitive)
+        # ---------------------------------------------------
+        rating_source = None
+
+        for key in data.keys():
+            if key.lower() in ["rating", "ratings"]:
+                rating_source = data[key]
+                break
+
+        # If no wrapper found, assume top-level is rating
+        if rating_source is None:
             rating_source = data
 
-        # Normalize keys
+        if not isinstance(rating_source, dict):
+            print(f"Skipped (invalid structure): {file.name}")
+            continue
+
+        # ---------------------------------------------------
+        # Step 2: Normalize metric keys
+        # ---------------------------------------------------
         fixed_rating = {}
+
         for key, value in rating_source.items():
-            # Normalize key by lowercasing and mapping
             normalized_key = KEY_MAP.get(key.lower())
             if normalized_key:
                 fixed_rating[normalized_key] = value
 
-        # Build final structure
+        # ---------------------------------------------------
+        # Step 3: Validate required metrics exist
+        # ---------------------------------------------------
+        missing = EXPECTED_KEYS - set(fixed_rating.keys())
+        if missing:
+            print(f"Warning: {file.name} missing keys: {missing}")
+
+        # ---------------------------------------------------
+        # Step 4: Overwrite with canonical structure
+        # ---------------------------------------------------
         data_fixed = {"rating": fixed_rating}
 
-        # Save back to file
         with open(file, "w", encoding="utf-8") as f:
             json.dump(data_fixed, f, indent=2, ensure_ascii=False)
 
