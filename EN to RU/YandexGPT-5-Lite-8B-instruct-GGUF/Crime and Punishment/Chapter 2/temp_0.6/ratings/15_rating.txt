@@ -4,6 +4,6 @@
     "Grammar": 9,
     "Fluency": 8,
     "Lexical Choice": 8,
-    "Completeness": 10
+    "Completeness": 9
   }
 }

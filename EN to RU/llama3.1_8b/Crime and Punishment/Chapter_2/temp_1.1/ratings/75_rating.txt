@@ -1,7 +1,9 @@
 {
-  "Meaning": 2,
-  "Grammar": 5,
-  "Fluency": 5,
-  "Lexical Choice": 3,
-  "Completeness": 4
+  "rating": {
+    "Meaning": 2,
+    "Grammar": 5,
+    "Fluency": 5,
+    "Lexical Choice": 3,
+    "Completeness": 4
+  }
 }

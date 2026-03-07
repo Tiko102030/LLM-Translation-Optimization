@@ -1,0 +1,9 @@
+{
+  "rating": {
+    "Meaning": 1,
+    "Grammar": 1,
+    "Fluency": 0,
+    "Lexical Choice": 0,
+    "Completeness": 0
+  }
+}

@@ -2,7 +2,7 @@
   "rating": {
     "Meaning": 9,
     "Grammar": 9,
-    "Fluency": 8,
+    "Fluency": 9,
     "Lexical Choice": 8,
     "Completeness": 10
   }

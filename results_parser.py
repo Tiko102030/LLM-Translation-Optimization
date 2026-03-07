@@ -1,7 +1,7 @@
 import json
 from pathlib import Path
 
-target_dir = Path("EN to RU/YandexGPT-5-Lite-8B-instruct-GGUF/Crime and Punishment/Chapter 2/temp_0.1/ratings")
+target_dir = Path("EN to RU/YandexGPT-5-Lite-8B-instruct-GGUF/Crime and Punishment/Chapter 2/temp_2.0/ratings")
 
 def get_average(property):
     """

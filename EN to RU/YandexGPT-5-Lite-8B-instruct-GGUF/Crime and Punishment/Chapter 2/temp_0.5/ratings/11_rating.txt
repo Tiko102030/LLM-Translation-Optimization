@@ -1,6 +1,6 @@
 {
   "rating": {
-    "Meaning": 2,
+    "Meaning": 0,
     "Grammar": 10,
     "Fluency": 10,
     "Lexical Choice": 10,
