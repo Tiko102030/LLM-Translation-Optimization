@@ -10,9 +10,9 @@ import check_translations
 # Configuration
 # -------------------------
 input_language = "RU"
-input_texts = ["test.txt"]
-text_source = "Crime and Punishment/Chapter_2"
-models = ["qwen3:8b"]
+input_texts = ["RusLTC_RU_1_94_1.txt"]
+# text_source = "Wikipedia/Neural Networks" 
+models = ["llama3.1:8b", "yandex/YandexGPT-5-Lite-8B-instruct-GGUF:latest"] # qwen3 finished
 temps = [0.1, 0.3, 0.5, 0.6, 0.7, 0.9, 1.1, 1.2, 1.5, 2.0]
 
 log_file = Path("pipeline_progress.log")
@@ -39,6 +39,7 @@ total_runs = len(input_texts) * len(models) * len(temps)
 # -------------------------
 with tqdm(total=total_runs, desc="Total pipeline progress", position=0) as pbar_total:
     for input_text in input_texts:
+        text_source = input_text.replace(".txt", "")
         # Parse once per text
         log(f"Parsing {input_text} into text_parts...")
         text_parser.parse(input_text)

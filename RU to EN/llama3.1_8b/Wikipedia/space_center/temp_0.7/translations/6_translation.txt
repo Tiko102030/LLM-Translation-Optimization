@@ -1,0 +1,1 @@
+If the errors of a neural network have a probability close to one billionth, then a billion test examples are needed to confirm this probability. As a result, testing well-trained neural networks becomes a very difficult task.

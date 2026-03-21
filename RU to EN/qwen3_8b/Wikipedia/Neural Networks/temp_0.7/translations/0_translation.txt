@@ -1,0 +1,11 @@
+Forecasting
+
+The ability of a neural network to forecast is directly derived from its ability to generalize and identify hidden dependencies between input and output data. After training, the network is capable of predicting future values of a sequence based on several previous values and (or) certain existing factors at the current moment. Forecasting is only possible when previous changes to some extent truly determine the future. For example, forecasting stock market quotes based on quotes from the previous week may be successful (or may not be), whereas forecasting tomorrow's lottery results based on data from the last 50 years is almost certainly going to yield no results. Used neural network architectures
+
+Approximation
+
+Neural networks can approximate continuous functions. The generalized approximation theorem has been proven: using linear operations and cascade connections, one can create a device that computes any continuous function with a predetermined accuracy from an arbitrary nonlinear element. This means that the nonlinear characteristic of a neuron can be arbitrary: from sigmoidal to an arbitrary wave packet or wavelet, sine, or polynomial. The choice of a nonlinear function may affect the complexity of a specific network, but with any nonlinearity, the network remains a universal approximator, and with the correct choice of structure, it can accurately approximate the functioning of any continuous automaton. Used neural network architectures
+
+Data compression and associative memory
+
+The ability of neural networks to detect relationships between different parameters allows expressing high-dimensional data more compactly if the data are closely interconnected with each other. The reverse process—reconstructing the original data set from partial information—is called (auto)associative memory.

@@ -1,0 +1,7 @@
+{
+  "meaning": 6,
+  "grammar": 6,
+  "fluency": 5,
+  "lexical_choice": 5,
+  "completeness": 4
+}
