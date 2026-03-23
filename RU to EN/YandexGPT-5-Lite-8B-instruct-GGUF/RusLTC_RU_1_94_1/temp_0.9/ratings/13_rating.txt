@@ -1,5 +1,5 @@
 {
-  "ratings": {
+  "rating": {
     "Meaning": 8,
     "Grammar": 8,
     "Fluency": 7,
