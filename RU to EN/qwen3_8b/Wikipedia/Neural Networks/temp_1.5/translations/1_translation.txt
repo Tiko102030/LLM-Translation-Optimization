@@ -1,0 +1,15 @@
+Reverse process—the restoration of the original dataset from partial information—is called (auto)associative memory. Associative memory also enables the restoration of the original signal/ image from noisy/corrupted input data. Solving the problem of hetero-associative memory allows the implementation of content-addressable memory. Data analysis 
+
+Used neural network architectures 
+
+Optimization 
+
+Used neural network architectures 
+
+Stages of problem solving 
+
+It is necessary to consider some of these stages in more detail. Data collection for training 
+
+Choosing data for training the network and processing it is the most complex stage of solving the problem. The training dataset must meet several criteria: 
+
+Original data is transformed into a form that can be fed into the network inputs. Each record in the data file is called a training pair or training vector. A training vector contains one value for each network input and, depending on the type of learning (supervised or unsupervised), one value for each network output. Training the network on raw data, as a rule, does not yield quality results. There are several ways to improve the network's perception.

@@ -14,7 +14,7 @@ def ask_llm(prompt, model, temperature):
         "prompt": prompt,
         "stream": False,
         "options": {
-            # "thinking": False,
+            "thinking": False,
             "temperature": temperature
         }
     }
