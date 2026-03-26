@@ -9,10 +9,10 @@ import check_translations
 # -------------------------
 # Configuration
 # -------------------------
-input_language = "RU"
-input_texts = ["RusLTC_RU_1_94_1.txt"]
+input_language = "EN"
+input_texts = ["RusLTC_EN_1_94.txt"]
 # text_source = "Wikipedia/Neural Networks" 
-models = ["llama3.1:8b", "yandex/YandexGPT-5-Lite-8B-instruct-GGUF:latest"] # qwen3 finished
+models = ["qwen3:8b", "yandex/YandexGPT-5-Lite-8B-instruct-GGUF:latest"] # Done: llama3.1:8b 
 temps = [0.1, 0.3, 0.5, 0.6, 0.7, 0.9, 1.1, 1.2, 1.5, 2.0]
 
 log_file = Path("pipeline_progress.log")
@@ -82,6 +82,23 @@ with tqdm(total=total_runs, desc="Total pipeline progress", position=0) as pbar_
                         raise ValueError("Incorrect model assigned")
 
                     base_path = Path(f"RU to EN/{model_dir}/{text_source}/temp_{temp}")
+                    base_path.mkdir(parents=True, exist_ok=True)
+
+                    shutil.move("translations", base_path / "translations")
+                    shutil.move("ratings", base_path / "ratings")
+                    shutil.copytree("text_parts", base_path / "text_parts", dirs_exist_ok=True)
+
+                if input_language == "EN":
+                    if model == "qwen3:8b":
+                        model_dir = "qwen3_8b"
+                    elif model == "llama3.1:8b":
+                        model_dir = "llama3.1_8b"
+                    elif model == "yandex/YandexGPT-5-Lite-8B-instruct-GGUF:latest":
+                        model_dir = "YandexGPT-5-Lite-8B-instruct-GGUF"
+                    else:
+                        raise ValueError("Incorrect model assigned")
+
+                    base_path = Path(f"EN to RU/{model_dir}/{text_source}/temp_{temp}")
                     base_path.mkdir(parents=True, exist_ok=True)
 
                     shutil.move("translations", base_path / "translations")
