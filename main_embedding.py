@@ -11,11 +11,11 @@ import check_translations
 # -------------------------
 input_language = "EN"
 input_texts = ["RusLTC_EN_1_94.txt"]
-# text_source = "Wikipedia/Neural Networks" 
-#  0.1, 0.3, 0.5, 0.6, 0.7, 0.9, 1.1, 1.2, 1.5, 2.0
-# "yandex/YandexGPT-5-Lite-8B-instruct-GGUF:latest"
-models = ["yandex/YandexGPT-5-Lite-8B-instruct-GGUF:latest"] # Done: llama3.1:8b, qwen3:8b, 
-temps = [0.1, 0.3, 0.5, 0.6, 0.7, 0.9, 1.1, 1.2, 1.5, 2.0]
+
+models = ["qwen3:8b", "llama3.1:8b", "yandex/YandexGPT-5-Lite-8B-instruct-GGUF:latest"]
+temp = 0.2
+
+generations = 5
 
 log_file = Path("pipeline_progress.log")
 completed_work = []
@@ -40,6 +40,11 @@ total_runs = len(input_texts) * len(models) * len(temps)
 # Main pipeline
 # -------------------------
 with tqdm(total=total_runs, desc="Total pipeline progress", position=0) as pbar_total:
+    for gen in range(generations):
+        log(f"Starting generation round {gen + 1}/{generations}...")
+        
+
+
     for input_text in input_texts:
         text_source = input_text.replace(".txt", "")
         # Parse once per text
