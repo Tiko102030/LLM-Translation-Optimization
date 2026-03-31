@@ -31,15 +31,30 @@ def create_file_with_text(file_path, content):
         f.write(content)
 
 
-def translate(model: str, temperature: float):
+def translate(model: str, temperature: float, generations: int = 1):
     instructions = instructions_file.read_text(encoding="utf-8")
+    folder_name = ""
 
     for file in source_text_dir.glob("*.txt"):
         content = file.read_text(encoding="utf-8")
 
-        answer = ask_llm(instructions + content, model, temperature)
+        folder_name = file.stem
+        Path(translations_dir / folder_name).mkdir(parents=True, exist_ok=True)
 
-        new_filepath = translations_dir / (file.stem + "_translation.txt")
-        create_file_with_text(new_filepath, answer)
+        if generations > 1:
+            answers = []
+            for _ in range(generations):
+                answer = ask_llm(instructions + content, model, temperature)
+                answers.append(answer)
+            for i, ans in enumerate(answers):
+                new_filepath = translations_dir / folder_name / (file.stem + "_translation.txt")
+                create_file_with_text(new_filepath.with_name(f"{new_filepath.stem}_{i}{new_filepath.suffix}"), ans)
+        else:
+            new_filepath = translations_dir / (file.stem + "_translation.txt")
+            answer = ask_llm(instructions + content, model, temperature)
+            create_file_with_text(new_filepath, answer)
 
         # print(f"Translated {file.name}")
+
+    if generations > 1:
+        return folder_name
