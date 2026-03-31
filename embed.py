@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from sklearn.decomposition import PCA
 
-def visualize_embeddings(embeddings, texts=None, folder=None, xlim=(-10, 10), ylim=(-10, 10)):
+def visualize_embeddings(embeddings, texts=None, folder=None, xlim=(-0.15, 0.15), ylim=(-0.15, 0.15)):
     embeddings = np.array(embeddings)
 
     # Compute centroid in original space

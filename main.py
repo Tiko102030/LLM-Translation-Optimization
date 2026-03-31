@@ -85,9 +85,21 @@ with tqdm(total=total_runs, desc="Total pipeline progress", position=0) as pbar_
                     base_path = Path(f"RU to EN/{model_dir}/{text_source}/temp_{temp}")
                     base_path.mkdir(parents=True, exist_ok=True)
 
-                    shutil.move("translations", base_path / "translations")
-                    shutil.move("ratings", base_path / "ratings")
-                    shutil.copytree("text_parts", base_path / "text_parts", dirs_exist_ok=True)
+                    dest_translations = base_path / "translations"
+                    dest_ratings = base_path / "ratings"
+                    dest_text_parts = base_path / "text_parts"
+
+                    if dest_translations.exists():
+                        shutil.rmtree(dest_translations)
+                    if dest_ratings.exists():
+                        shutil.rmtree(dest_ratings)
+                    if dest_text_parts.exists():
+                        shutil.rmtree(dest_text_parts)
+
+                    shutil.move("translations", dest_translations)
+                    shutil.move("ratings", dest_ratings)
+                    shutil.copytree("text_parts", dest_text_parts)
+
 
                 if input_language == "EN":
                     if model == "qwen3:8b":
@@ -102,9 +114,20 @@ with tqdm(total=total_runs, desc="Total pipeline progress", position=0) as pbar_
                     base_path = Path(f"EN to RU/{model_dir}/{text_source}/temp_{temp}")
                     base_path.mkdir(parents=True, exist_ok=True)
 
-                    shutil.move("translations", base_path / "translations")
-                    shutil.move("ratings", base_path / "ratings")
-                    shutil.copytree("text_parts", base_path / "text_parts", dirs_exist_ok=True)
+                    dest_translations = base_path / "translations"
+                    dest_ratings = base_path / "ratings"
+                    dest_text_parts = base_path / "text_parts"
+
+                    if dest_translations.exists():
+                        shutil.rmtree(dest_translations)
+                    if dest_ratings.exists():
+                        shutil.rmtree(dest_ratings)
+                    if dest_text_parts.exists():
+                        shutil.rmtree(dest_text_parts)
+
+                    shutil.move("translations", dest_translations)
+                    shutil.move("ratings", dest_ratings)
+                    shutil.copytree("text_parts", dest_text_parts)
 
                 # -------------------------
                 # Update total progress
