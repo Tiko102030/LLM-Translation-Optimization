@@ -4,16 +4,8 @@ from pathlib import Path
 # target_dir = Path("RU to EN/YandexGPT-5-Lite-8B-instruct-GGUF/Crime and Punishment/Chapter_2/temp_2.0/ratings")
 
 target_dirs = [
-    "temp_tests/EN to RU/llama3.1_8b/RusLTC_EN_1_94/temp_0.1/ratings",
-    "temp_tests/EN to RU/llama3.1_8b/RusLTC_EN_1_94/temp_0.3/ratings",
-    "temp_tests/EN to RU/llama3.1_8b/RusLTC_EN_1_94/temp_0.5/ratings",
-    "temp_tests/EN to RU/llama3.1_8b/RusLTC_EN_1_94/temp_0.6/ratings",
-    "temp_tests/EN to RU/llama3.1_8b/RusLTC_EN_1_94/temp_0.7/ratings",
-    "temp_tests/EN to RU/llama3.1_8b/RusLTC_EN_1_94/temp_0.9/ratings",
-    "temp_tests/EN to RU/llama3.1_8b/RusLTC_EN_1_94/temp_1.1/ratings",
-    "temp_tests/EN to RU/llama3.1_8b/RusLTC_EN_1_94/temp_1.2/ratings",
-    "temp_tests/EN to RU/llama3.1_8b/RusLTC_EN_1_94/temp_1.5/ratings",
-    "temp_tests/EN to RU/llama3.1_8b/RusLTC_EN_1_94/temp_2.0/ratings"
+    "Embedding_test/RU to EN/YandexGPT-5-Lite-8B-instruct-GGUF/RusLTC_RU_1_94_1/ratings",
+
 
 ]
 
