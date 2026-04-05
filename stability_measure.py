@@ -2,7 +2,7 @@ import json
 from pathlib import Path
 import math
 
-target_dir = Path("temp_tests/EN to RU/llama3.1_8b/Crime and Punishment/Chapter_2/temp_0.1/ratings")
+target_dir = Path("Embedding_test/EN to RU/llama3.1_8b/RusLTC_EN_1_94/ratings")
 
 def get_std(property):
     values = []
